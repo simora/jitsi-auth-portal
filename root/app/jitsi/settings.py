@@ -20,7 +20,7 @@ def read_secret(secret_name):
     except EnvironmentError:
         chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
         rand_string = get_random_string(50, chars)
-        while open(os.path.join('/config/secrets', secret_name), 'w', encoding='utf-8') as secret:
+        with open(os.path.join('/config/secrets', secret_name), 'w', encoding='utf-8') as secret:
             secret.write(rand_string)
         return rand_string
     else:
