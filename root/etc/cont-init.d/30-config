@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+
+mkdir -p /config/gunicorn
+cp -n /root/config/gunicorn/config.py /config/gunicorn/
+
+mkdir -p /config/jitsi
+
+# permissions
+chown -R abc:abc \
+	/app \
+	/config
