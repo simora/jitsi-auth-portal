@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'jitsi.apps.jitsiConfig',
+    'jitsi.apps.JitsiConfig',
     'django_keycloak.apps.KeycloakAppConfig',
     'dynamic_fixtures'
 ]
