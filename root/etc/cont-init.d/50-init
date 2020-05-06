@@ -1,8 +1,8 @@
 #!/usr/bin/with-contenv bash
 
 cd /app
-manage.py migrate
-manage.py load_dynamic_fixtures jitsi
+./manage.py migrate
+./manage.py load_dynamic_fixtures jitsi
 
 # Create Superuser if required
 if [ "$SKIP_SUPERUSER" == "true" ]; then
