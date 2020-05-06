@@ -1,5 +1,5 @@
 pythonpath = '/app'
-errorlog = '-'
-accesslog = '-'
-capture_output = False
+errorlog = '/config/gunicorn/error.log'
+accesslog = '/config/gunicorn/access.log'
+capture_output = True
 loglevel = 'info'
