@@ -12,8 +12,7 @@ RUN \
     ca-certificates \
     git \
     python3 \
-    python3-pip \
-    build-base && \
+    python3-pip && \
   pip install --no-warn-script-location \
     gunicorn \
     Django \
