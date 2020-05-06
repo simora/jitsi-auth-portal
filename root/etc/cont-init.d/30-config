@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 mkdir -p /config/gunicorn
-cp -n /root/config/gunicorn/config.py /config/gunicorn/
+cp -n /etc/config/gunicorn/config.py /config/gunicorn/
 
 mkdir -p /config/jitsi
 
