@@ -13,11 +13,11 @@ RUN \
     git \
     python3 \
     python3-pip && \
-  pip3 install --no-warn-script-location \
+  pip3 install \
     gunicorn \
     Django \
     git+https://github.com/Peter-Slump/django-keycloak.git && \
-  pip3 install --no-warn-script-location -r /app/requirements.txt && \
+  pip3 install -r /app/requirements.txt && \
   echo "**** cleanup ****" && \
   apt-get -y remove \
      git && \
