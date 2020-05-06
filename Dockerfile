@@ -35,9 +35,3 @@ WORKDIR /opt
 COPY --from=builder /install /usr/local
 
 COPY app /opt/app
-
-WORKDIR /opt/app
-
-ENTRYPOINT [ "/opt/app/docker-entrypoint.sh" ]
-
-CMD ["gunicorn", "-c /etc/app/config/gunicorn_config.py", "app.wsgi"]
