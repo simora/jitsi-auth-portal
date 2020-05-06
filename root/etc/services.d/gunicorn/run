@@ -5,7 +5,7 @@ echo "Starting Gunicorn"
 [ -z "$PORT" ] && PORT="8080"
 [ -z "$NUM_WORKERS" ] && NUM_WORKERS="4"
 
-cd /app/jitsi || exit
+cd /app || exit
 
 exec \
   s6-setuidgid abc gunicorn \
