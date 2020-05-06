@@ -22,7 +22,7 @@ RUN pip install --prefix="/install" --no-warn-script-location \
     Django \
     git+https://github.com/Peter-Slump/django-keycloak.git
 
-COPY root/app/jitsi/requirements.txt /
+COPY root/app/requirements.txt /
 RUN pip install --prefix="/install" --no-warn-script-location -r /requirements.txt
 
 FROM lsiobase/ubuntu:bionic
