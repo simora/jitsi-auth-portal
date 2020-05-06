@@ -4,6 +4,7 @@ mkdir -p /config/gunicorn
 cp -n /etc/config/gunicorn/config.py /config/gunicorn/
 
 mkdir -p /config/jitsi
+mkdir -p /config/secrets
 
 # permissions
 chown -R abc:abc \

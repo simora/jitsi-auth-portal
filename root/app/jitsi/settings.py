@@ -11,9 +11,26 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from django.utils.crypto import get_random_string
+
+# Read secret from file
+def read_secret(secret_name):
+    try:
+        f = open(os.path.join('/config/secrets', secret_name), 'r', encoding='utf-8')
+    except EnvironmentError:
+        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+        rand_string = get_random_string(50, chars)
+        while open(os.path.join('/config/secrets', secret_name), 'w', encoding='utf-8') as secret:
+            secret.write(rand_string)
+        return rand_string
+    else:
+        with f:
+            return f.readline().strip()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+SECRET_KEY = os.environ.get('SECRET_KEY', read_secret('secret_key'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
