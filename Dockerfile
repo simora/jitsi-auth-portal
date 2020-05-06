@@ -38,7 +38,7 @@ RUN \
   apt-get install -y \
     bash \
     ca-certificates \
-    python3 \
+    python3 && \
   update-alternatives --install /usr/bin/python python /usr/bin/python3 5 && \
   echo "**** cleanup ****" && \
   apt-get -y remove \
