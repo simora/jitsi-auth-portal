@@ -13,7 +13,7 @@ RUN \
     git \
     python3 \
     python3-pip && \
-  update-alternatives --install /usr/bin/python python /usr/bin/python3 5
+  update-alternatives --install /usr/bin/python python /usr/bin/python3 5 && \
   pip3 install \
     gunicorn \
     Django \
