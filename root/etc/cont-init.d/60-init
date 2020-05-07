@@ -3,7 +3,7 @@
 echo "Beginning /config preparation"
 
 mkdir -p /config/gunicorn
-[[ ! -f /config/gunicorn/config.py ]] && cp /etc/config/gunicorn/config.py /config/gunicorn/
+[[ ! -f /config/gunicorn/config.py ]] && cp /defaults/gunicorn/config.py /config/gunicorn/
 
 mkdir -p /config/jitsi
 mkdir -p /config/secrets
