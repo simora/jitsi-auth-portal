@@ -1,6 +1,6 @@
 FROM lsiobase/nginx:3.11
 
-COPY root/ /
+COPY root/app /app
 
 RUN \
   echo "**** install build packages ****" && \
@@ -99,3 +99,6 @@ RUN \
   rm -rf \
   	/tmp/* \
   	/root/.cache
+
+COPY root/etc /etc
+COPY root/defaults /defaults
