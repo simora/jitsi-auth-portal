@@ -1,28 +1,24 @@
-FROM lsiobase/ubuntu:bionic
-
-ARG DEBIAN_FRONTEND="noninteractive"
-
-COPY root/ /
+FROM python:3.7-alpine
 
 RUN \
   echo "**** install packages ****" && \
-  apt-get update && \
-  apt-get install -y \
-    bash \
-    ca-certificates \
+  apk update && \
+  apk add \
     git \
-    python3 \
-    python3-pip && \
-  update-alternatives --install /usr/bin/python python /usr/bin/python3 5 && \
-  pip3 install \
+    openssl-dev \
+    libffi-dev \
+    python-dev \
+    build-base \
+    ca-certificates &&\
+  pip install --no-cache-dir \
     gunicorn \
     Django \
     git+https://github.com/Peter-Slump/django-keycloak.git && \
-  pip3 install -r /app/requirements.txt && \
+  pip install --no-cache-dir -r /app/requirements.txt && \
   echo "**** cleanup ****" && \
-  apt-get -y remove \
-     git && \
-  apt-get -y autoremove && \
   rm -rf \
-   /root/.cache \
-   /tmp/*
+    /var/cache/apk/* \
+    /root/.cache \
+    /tmp/*
+
+COPY root/ /

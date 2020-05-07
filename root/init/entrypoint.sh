@@ -1,6 +1,18 @@
-#!/usr/bin/with-contenv bash
+#!/bin/bash
+
+echo "Beginning /config preparation"
+
+mkdir -p /config/gunicorn
+cp -n /etc/config/gunicorn/config.py /config/gunicorn/
+
+mkdir -p /config/jitsi
+mkdir -p /config/secrets
 
 cd /app
+
+echo "Completed /config preparation"
+echo "Beginning Django app Initialisation"
+
 ./manage.py migrate
 ./manage.py load_dynamic_fixtures jitsi
 
@@ -32,4 +44,16 @@ fi
 # Copy static files
 ./manage.py collectstatic --no-input
 
-echo "Initialisation is done."
+echo "Completed Django app Initialisation"
+echo "Starting Gunicorn"
+
+[ -z "$PORT" ] && PORT="8080"
+[ -z "$NUM_WORKERS" ] && NUM_WORKERS="4"
+
+cd /app || exit
+
+gunicorn \
+    --bind 0.0.0.0:$PORT \
+    --config /config/gunicorn/config.py \
+    --workers $NUM_WORKERS \
+    jitsi.wsgi
