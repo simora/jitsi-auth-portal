@@ -1,5 +1,7 @@
 FROM python:3.7-alpine
 
+COPY root/ /
+
 RUN \
   echo "**** install packages ****" && \
   apk update && \
@@ -21,5 +23,4 @@ RUN \
     /root/.cache \
     /tmp/*
 
-COPY root/ /
 ENTRYPOINT [ "/init/docker-entrypoint.sh" ]
