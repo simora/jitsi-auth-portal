@@ -6,6 +6,7 @@ RUN \
   echo "**** install packages ****" && \
   apk update && \
   apk add \
+    bash \
     git \
     openssl-dev \
     libffi-dev \
