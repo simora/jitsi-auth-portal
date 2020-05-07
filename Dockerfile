@@ -24,4 +24,4 @@ RUN \
     /root/.cache \
     /tmp/*
 
-ENTRYPOINT [ "/init/docker-entrypoint.sh" ]
+ENTRYPOINT [ "/app/docker-entrypoint.sh" ]
