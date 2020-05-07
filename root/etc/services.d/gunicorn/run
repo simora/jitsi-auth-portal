@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+echo "Starting Gunicorn"
+
+[ -z "$NUM_WORKERS" ] && NUM_WORKERS="4"
+
+cd /app || exit
+
+exec \
+  s6-setuidgid abc gunicorn \
+    --bind 0.0.0.0:8080 \
+    --config /config/gunicorn/config.py \
+    --workers $NUM_WORKERS \
+    jitsi.wsgi

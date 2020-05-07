@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bash
 
 echo "Beginning /config preparation"
 
@@ -45,15 +45,3 @@ fi
 ./manage.py collectstatic --no-input
 
 echo "Completed Django app Initialisation"
-echo "Starting Gunicorn"
-
-[ -z "$PORT" ] && PORT="8080"
-[ -z "$NUM_WORKERS" ] && NUM_WORKERS="4"
-
-cd /app || exit
-
-gunicorn \
-    --bind 0.0.0.0:$PORT \
-    --config /config/gunicorn/config.py \
-    --workers $NUM_WORKERS \
-    jitsi.wsgi
