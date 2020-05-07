@@ -22,3 +22,4 @@ RUN \
     /tmp/*
 
 COPY root/ /
+ENTRYPOINT [ "/init/docker-entrypoint.sh" ]
