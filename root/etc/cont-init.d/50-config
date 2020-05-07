@@ -33,8 +33,12 @@ cp /config/fail2ban/jail.local /etc/fail2ban/jail.local
 # copy crontab and proxy defaults if needed
 [[ ! -f /config/crontabs/root ]] && \
 	cp /etc/crontabs/root /config/crontabs/
+[[ ! -f /config/nginx/nginx.conf ]] && \
+	cp /defaults/nginx.conf /config/nginx/nginx.conf
 [[ ! -f /config/nginx/proxy.conf ]] && \
 	cp /defaults/proxy.conf /config/nginx/proxy.conf
+[[ ! -f /config/nginx/default ]] && \
+	cp /defaults/default /config/nginx/default
 
 # import user crontabs
 rm /etc/crontabs/*

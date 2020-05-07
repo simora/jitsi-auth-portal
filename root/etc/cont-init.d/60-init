@@ -7,6 +7,10 @@ mkdir -p /config/gunicorn
 
 mkdir -p /config/jitsi
 mkdir -p /config/secrets
+chown -R abc:abc \
+  /config/secrets \
+  /config/jitsi \
+  /config/gunicorn
 
 cd /app
 

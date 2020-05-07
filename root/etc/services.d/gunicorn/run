@@ -7,7 +7,7 @@ echo "Starting Gunicorn"
 cd /app || exit
 
 exec \
-  s6-setuidgid abc gunicorn \
+  gunicorn \
     --bind 0.0.0.0:8080 \
     --config /config/gunicorn/config.py \
     --workers $NUM_WORKERS \
