@@ -40,6 +40,8 @@ ALLOWED_HOSTS = ['*']
 LOGIN_URL = 'keycloak_login'
 LOGOUT_REDIRECT_URL = 'keycloak_login'
 
+KEYCLOAK_OIDC_PROFILE_MODEL = 'django_keycloak.OpenIdConnectProfile'
+
 SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -68,7 +70,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'django_keycloak.middleware.BaseKeycloakMiddleware',
-    'django_keycloak.middleware.RemoteUserAuthenticationMiddleware',
 ]
 
 PASSWORD_HASHERS = [
