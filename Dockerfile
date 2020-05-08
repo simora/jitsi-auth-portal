@@ -82,6 +82,8 @@ RUN \
     Django \
     git+https://github.com/Peter-Slump/django-keycloak.git && \
   pip3 install --no-cache-dir -r /app/requirements.txt && \
+  ln -s /usr/bin/python3 /usr/bin/python && \
+  ln -s /usr/bin/pip3 /usr/bin/pip && \
   echo "**** remove unnecessary fail2ban filters ****" && \
   rm \
   	/etc/fail2ban/jail.d/alpine-ssh.conf && \

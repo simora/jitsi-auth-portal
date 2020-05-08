@@ -11,15 +11,12 @@ mkdir -p \
 	/var/run/fail2ban
 rm -rf /etc/letsencrypt
 
-# copy reverse proxy configs
-cp -R /defaults/proxy-confs /config/nginx/
-
 # copy/update the fail2ban config defaults to/in /config
 cp -R /defaults/fail2ban/filter.d /config/fail2ban/
 cp -R /defaults/fail2ban/action.d /config/fail2ban/
 # if jail.local is missing in /config, copy default
 [[ ! -f /config/fail2ban/jail.local ]] && \
-	cp /defaults/jail.local /config/fail2ban/jail.local
+	cp /defaults/fail2ban/jail.local /config/fail2ban/jail.local
 # Replace fail2ban config with user config
 [[ -d /etc/fail2ban/filter.d ]] && \
 	rm -rf /etc/fail2ban/filter.d
